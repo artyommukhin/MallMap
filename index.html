@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Map</title>
+    <script>
+    </script>
+</head>
+<body>
+    <h1 style="text-align: center">This website helps you to navigate in a mall</h1>
+    <img src="img/MallMap.png" alt="MallMap" width="20%" height="20%" style="margin-left: auto; margin-right: auto; display: block">
+    <canvas></canvas>
+
+    <div class="geoloc" style="text-align: center"></div>
+
+    <script> 
+	document.addEventListener("keydown", keyDownTextField, false);
+
+    function keyDownTextField(e) {
+        switch (e.key){
+            case "ArrowUp":
+
+        }
+
+        console.log(e.key);
+    }
+
+    function emulateGeolocation() {
+        console.log("lat: " + position.coords.latitude);
+        console.log("long: " + position.coords.longitude);
+        
+        var geolocDiv = document.getElementsByClassName("geoloc");
+
+        var latP = document.createElement("p");
+        latP.innerHTML = "Your latitude is " + position.coords.latitude;          
+        geolocDiv[0].appendChild(latP);
+
+        var longP = document.createElement("p");
+        longP.innerHTML = "Your longitude is " + position.coords.longitude;
+        geolocDiv[0].appendChild(longP);
+	}
+
+
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("lat: " + position.coords.latitude);
+            console.log("long: " + position.coords.longitude);
+            
+            var geolocDiv = document.getElementsByClassName("geoloc");
+
+            var latP = document.createElement("p");
+            latP.innerHTML = "Your latitude is " + position.coords.latitude;          
+            geolocDiv[0].appendChild(latP);
+
+            var longP = document.createElement("p");
+            longP.innerHTML = "Your longitude is " + position.coords.longitude;
+            geolocDiv[0].appendChild(longP);    
+        });
+    } else {
+        console.log("geoloc off");
+    }
+    </script>
+</body>
+</html>
