@@ -11,19 +11,40 @@
 <body>
     <h1 style="text-align: center">This website helps you to navigate in a mall</h1>
     <img src="img/MallMap.png" alt="MallMap" width="20%" height="20%" style="margin-left: auto; margin-right: auto; display: block">
-    <canvas></canvas>
+    
+    
 
     <div class="geoloc" style="text-align: center"></div>
 
+    <img src="img/marker.png" alt="You" width="3%" height="3%" id="marker" >
+
     <script> 
+
+    var markerPos = {
+        x:0,
+        y:0
+    }
+
+    var marker = document.getElementById('marker');
+    
 	document.addEventListener("keydown", keyDownTextField, false);
 
     function keyDownTextField(e) {
         switch (e.key){
             case "ArrowUp":
-
+            markerPos.y-=10;    
+            marker.style.top = markerPos.y + 'px';    
+                //alert('arrow up');
+                break;
+            case 'ArrowDown':
+            markerPos.y+=10;
+            marker.style.top = markerPos.y + 'px';
+                //alert('arrow down');
+                break;
+            default:
+                //alert('key pressed');
+                break;
         }
-
         console.log(e.key);
     }
 
